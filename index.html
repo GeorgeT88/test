@@ -2,272 +2,332 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>John Doe | Author & Storyteller</title>
+  <title>John Doe | Communications & Writing Professional</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #040816;
-      --card: #0b1020;
-      --accent: #f97316;
-      --accent-soft: rgba(249,115,22,0.12);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --radius-xl: 18px;
-      --radius-full: 999px;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, -segoe-ui, sans-serif;
+      --bg: #050509;
+      --bg-soft: #101013;
+      --text: #f5f5f5;
+      --muted: #a3a3a3;
+      --accent: #f5f5f5;
+      --accent-soft: #222222;
+      --radius: 14px;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, -segoe-ui, sans-serif;
     }
-    * { box-sizing: border-box; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      margin: 0;
-      font-family: var(--font-main);
-      background: radial-gradient(circle at top, #020817 0, #020817 40%, #000 100%);
+      font-family: var(--font);
+      background-color: var(--bg);
       color: var(--text);
+      min-height: 100vh;
     }
-    header {
-      padding: 40px 20px 10px;
-      text-align: center;
+
+    /* Top bar */
+    .top-bar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 26px 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
     }
-    .logo {
+
+    .brand {
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      margin-left: 26px;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: var(--accent);
+    }
+
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 16px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 20px 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 500;
+      line-height: 1.14;
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      max-width: 520px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 26px;
+    }
+
+    .hero-links a {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-    }
-    h1 {
-      margin: 18px 0 6px;
-      font-size: 34px;
-      font-weight: 600;
-    }
-    .tagline {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 26px 20px 40px;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 840px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
-    .card {
-      background: var(--card);
-      border-radius: var(--radius-xl);
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148,163,253,0.04);
-      margin-bottom: 16px;
-    }
-    h2 {
-      font-size: 18px;
-      margin: 0 0 10px;
-      font-weight: 500;
-    }
-    p {
-      margin: 0 0 10px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
-      gap: 14px;
-    }
-    .book {
-      background: radial-gradient(circle at top left, rgba(249,115,22,0.18), transparent),
-                  #050814;
-      border-radius: 14px;
-      padding: 10px 10px 12px;
-      border: 1px solid rgba(75,85,99,0.5);
-      display: flex;
-      flex-direction: column;
       gap: 6px;
-    }
-    .book img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.6);
-    }
-    .book-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .book-tagline {
-      font-size: 11px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
       color: var(--muted);
-    }
-    .meta {
-      font-size: 10px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .gallery img {
-      width: 100%;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 10px;
-      opacity: .92;
-      transition: transform .25s ease, opacity .25s ease;
-    }
-    .gallery img:hover {
-      transform: translateY(-3px);
-      opacity: 1;
-    }
-    .pill {
-      display:inline-block;
-      padding:4px 9px;
-      border-radius:var(--radius-full);
-      background:rgba(17,24,39,0.98);
-      font-size:10px;
-      color:var(--muted);
-      margin:3px 3px 0 0;
-    }
-    a {
-      color: var(--accent);
+      font-size: 11px;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .hero-links a span.icon {
+      font-size: 14px;
     }
-    footer {
-      text-align:center;
-      padding: 8px 16px 20px;
+
+    .hero-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Books section */
+    .books-section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 10px 20px 40px;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .book-card {
+      background: var(--bg-soft);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid #181818;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+      border-color: #333333;
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .book-body {
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .book-label {
       font-size: 10px;
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .book-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .book-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 2px;
+      flex: 1;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 20px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid #151515;
+    }
+
+    footer .right a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 10px;
+      margin-bottom: 3px;
+    }
+
+    footer .right a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 18px;
+      }
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">John Doe · Author</div>
-  <h1>Stories that linger after the last page.</h1>
-  <div class="tagline">
-    I’m John Doe, a fiction writer exploring memory, cities at night, and the thin line between reality and imagination.
+  <div class="top-bar">
+    <div class="brand">John Doe</div>
+    <nav>
+      <a href="#summary" class="active">Summary</a>
+      <a href="#about">About me</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
+
+  <section id="summary" class="hero">
+    <h1 class="hero-title">Communications and Writing Professional</h1>
+    <p class="hero-subtitle">
+      From technical and academic to creative and poetic writing, I am a writer at heart.
+      My work spans essays, fiction, and storytelling that connects data, people, and emotion.
+    </p>
+    <div class="hero-links">
+      <a href="#contact">
+        <span class="icon">✉️</span>
+        <span>Contact for collaborations &amp; commissions</span>
+      </a>
+    </div>
+  </section>
 </header>
 
-<div class="container">
-  <!-- LEFT COLUMN -->
-  <main>
-    <section class="card">
-      <h2>About John Doe</h2>
-      <p>
-        John Doe is a contemporary author whose work blends intimate character portraits
-        with atmospheric worlds. His books follow quiet lives disrupted by strange
-        events, the weight of choices, and the echoes of the past.
-      </p>
-      <p>
-        When he’s not writing, he’s collecting stories from train stations, old cafés,
-        and conversations that were never meant to be heard.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Books</h2>
-      <div class="books-grid">
-        <!-- Book 1 -->
-        <article class="book">
-          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg" alt="Book cover - The Silent City">
-          <div class="meta">Novel</div>
-          <div class="book-title">The Silent City</div>
-          <div class="book-tagline">
-            A portrait of a sleeping metropolis and the one man who hears its secrets.
-          </div>
-        </article>
-
-        <!-- Book 2 -->
-        <article class="book">
-          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=600" alt="Book cover - Echoes of Rain">
-          <div class="meta">Short Stories</div>
-          <div class="book-title">Echoes of Rain</div>
-          <div class="book-tagline">
-            Eleven stories about love, loss, and the storms we never forecast.
-          </div>
-        </article>
-
-        <!-- Book 3 -->
-        <article class="book">
-          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=800" alt="Book cover - Paper Lanterns">
-          <div class="meta">Novel</div>
-          <div class="book-title">Paper Lanterns</div>
-          <div class="book-tagline">
-            A journey through a city of lights, where every wish has a cost.
-          </div>
-        </article>
-
-        <!-- Book 4 -->
-        <article class="book">
-          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=700" alt="Book cover - The Last Letter North">
-          <div class="meta">Novella</div>
-          <div class="book-title">The Last Letter North</div>
-          <div class="book-tagline">
-            One letter, five winters, and the map of a life that might have been.
-          </div>
-        </article>
-
-        <!-- Book 5 -->
-        <article class="book">
-          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=650" alt="Book cover - Rooms We Never Leave">
-          <div class="meta">Short Stories</div>
-          <div class="book-title">Rooms We Never Leave</div>
-          <div class="book-tagline">
-            An exploration of the spaces—real and emotional—that hold us in place.
-          </div>
-        </article>
+<main class="books-section">
+  <div class="books-grid">
+    <!-- Book 1 -->
+    <article class="book-card">
+      <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=800"
+           alt="Stack of books on a table">
+      <div class="book-body">
+        <div class="book-label">Book One</div>
+        <div class="book-title">Whispers Between Pages</div>
+        <p class="book-desc">
+          A collection of intimate stories about the small decisions that quietly change our lives.
+        </p>
       </div>
-    </section>
-  </main>
+    </article>
 
-  <!-- RIGHT COLUMN -->
-  <aside>
-    <section class="card">
-      <h2>Author Photos</h2>
-      <p>Moments from readings, writing sessions, and the cities that shape my stories.</p>
-      <div class="gallery">
-        <img src="https://images.pexels.com/photos/261949/pexels-photo-261949.jpeg" alt="John Doe writing in a notebook">
-        <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg" alt="Books and coffee on a table">
-        <img src="https://images.pexels.com/photos/702632/pexels-photo-702632.jpeg" alt="City at night with lights">
-        <img src="https://images.pexels.com/photos/167404/pexels-photo-167404.jpeg" alt="Reading session with audience">
+    <!-- Book 2 -->
+    <article class="book-card">
+      <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=900"
+           alt="Open book with warm light">
+      <div class="book-body">
+        <div class="book-label">Book Two</div>
+        <div class="book-title">Cities Made of Ink</div>
+        <p class="book-desc">
+          Essays and narratives exploring the rhythm of modern cities and the stories hidden in their streets.
+        </p>
       </div>
-    </section>
+    </article>
 
-    <section class="card">
-      <h2>Contact</h2>
-      <p>For interviews, events, or rights inquiries:</p>
-      <p>
-        📧 <a href="mailto:contact.johndoe@example.com">contact.johndoe@example.com</a><br>
-        📚 Instagram / Twitter: <span class="pill">@johndoewrites</span>
-      </p>
-    </section>
-  </aside>
-</div>
+    <!-- Book 3 -->
+    <article class="book-card">
+      <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=1000"
+           alt="Bookshelves in a library">
+      <div class="book-body">
+        <div class="book-label">Book Three</div>
+        <div class="book-title">Signals in the Static</div>
+        <p class="book-desc">
+          Thoughtful commentary on communication, digital culture, and how stories travel through our timelines.
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 4 -->
+    <article class="book-card">
+      <img src="https://images.pexels.com/photos/415071/pexels-photo-415071.jpeg?auto=compress&cs=tinysrgb&w=900"
+           alt="Cup of coffee and book">
+      <div class="book-body">
+        <div class="book-label">Book Four</div>
+        <div class="book-title">The Quiet Hour</div>
+        <p class="book-desc">
+          Reflective pieces on solitude, creativity, and the discipline of writing in a noisy world.
+        </p>
+      </div>
+    </article>
+
+    <!-- Book 5 -->
+    <article class="book-card">
+      <img src="https://images.pexels.com/photos/33283/stack-of-books-vintage-books-book-books.jpg?auto=compress&cs=tinysrgb&w=900"
+           alt="Vintage stack of books">
+      <div class="book-body">
+        <div class="book-label">Book Five</div>
+        <div class="book-title">Letters Never Sent</div>
+        <p class="book-desc">
+          A series of fictional letters capturing love, regret, and the words we almost say.
+        </p>
+      </div>
+    </article>
+  </div>
+</main>
 
 <footer>
-  © <span id="year"></span> John Doe. All rights reserved.
+  <div class="left">
+    © <span id="year"></span> John Doe. All rights reserved.
+  </div>
+  <div class="right" id="about">
+    <a>
+      John Doe is a multidisciplinary writer blending research, narrative, and creative craft
+      to build clear, engaging stories for readers and organizations.
+    </a>
+    <div id="contact">
+      <a href="mailto:contact.johndoe@example.com">contact.johndoe@example.com</a>
+    </div>
+  </div>
 </footer>
 
 <script>
