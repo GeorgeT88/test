@@ -2,120 +2,277 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Name | QA & Test Automation</title>
+  <title>John Doe | Author & Storyteller</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background:#0f172a; color:#e5e7eb; }
-    header { padding: 40px 20px; text-align: center; }
-    h1 { margin: 0; font-size: 32px; }
-    h2 { margin-top: 40px; font-size: 22px; }
-    .tagline { color:#9ca3af; margin-top:8px; }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; }
-    .badge { display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid #4b5563; font-size:12px; margin:2px; }
-    .card { border:1px solid #111827; background:#111827; padding:16px 18px; border-radius:14px; margin-top:14px; }
-    a { color:#38bdf8; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .pill { display:inline-block; padding:4px 9px; border-radius:999px; background:#111827; font-size:11px; margin:2px 4px 0 0; color:#9ca3af; }
-    footer { text-align:center; font-size:12px; color:#6b7280; padding-bottom:20px; }
+    :root {
+      --bg: #040816;
+      --card: #0b1020;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --radius-xl: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, -segoe-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #020817 0, #020817 40%, #000 100%);
+      color: var(--text);
+    }
+    header {
+      padding: 40px 20px 10px;
+      text-align: center;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+    h1 {
+      margin: 18px 0 6px;
+      font-size: 34px;
+      font-weight: 600;
+    }
+    .tagline {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 26px 20px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 840px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,253,0.04);
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+      font-weight: 500;
+    }
+    p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+      gap: 14px;
+    }
+    .book {
+      background: radial-gradient(circle at top left, rgba(249,115,22,0.18), transparent),
+                  #050814;
+      border-radius: 14px;
+      padding: 10px 10px 12px;
+      border: 1px solid rgba(75,85,99,0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .book img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+    }
+    .book-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .book-tagline {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .meta {
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 10px;
+      opacity: .92;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .gallery img:hover {
+      transform: translateY(-3px);
+      opacity: 1;
+    }
+    .pill {
+      display:inline-block;
+      padding:4px 9px;
+      border-radius:var(--radius-full);
+      background:rgba(17,24,39,0.98);
+      font-size:10px;
+      color:var(--muted);
+      margin:3px 3px 0 0;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align:center;
+      padding: 8px 16px 20px;
+      font-size: 10px;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
+
 <header>
-  <h1>Your Name</h1>
-  <div class="tagline">Senior QA / Test Automation Engineer · API, microservices, contract testing, CI/CD</div>
+  <div class="logo">John Doe · Author</div>
+  <h1>Stories that linger after the last page.</h1>
+  <div class="tagline">
+    I’m John Doe, a fiction writer exploring memory, cities at night, and the thin line between reality and imagination.
+  </div>
 </header>
 
 <div class="container">
-  <section>
-    <h2>About</h2>
-    <div class="card">
+  <!-- LEFT COLUMN -->
+  <main>
+    <section class="card">
+      <h2>About John Doe</h2>
       <p>
-        I design and automate test strategies for microservice ecosystems: REST APIs, Spring Boot,
-        contract testing (PactFlow), security checks, and CI-integrated quality gates.
+        John Doe is a contemporary author whose work blends intimate character portraits
+        with atmospheric worlds. His books follow quiet lives disrupted by strange
+        events, the weight of choices, and the echoes of the past.
       </p>
       <p>
-        My focus: reliable automation, clean architecture, and giving dev teams fast feedback so they
-        can ship safely.
+        When he’s not writing, he’s collecting stories from train stations, old cafés,
+        and conversations that were never meant to be heard.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Skills</h2>
-    <div class="card">
-      <span class="badge">Java · JUnit5</span>
-      <span class="badge">REST Assured</span>
-      <span class="badge">Pact / PactFlow</span>
-      <span class="badge">Selenide / Selenium / Cypress</span>
-      <span class="badge">ArchUnit</span>
-      <span class="badge">Allure</span>
-      <span class="badge">GitHub Actions / Azure DevOps</span>
-      <span class="badge">API & Microservice Testing</span>
-      <span class="badge">Performance & Security basics</span>
-    </div>
-  </section>
+    <section class="card">
+      <h2>Books</h2>
+      <div class="books-grid">
+        <!-- Book 1 -->
+        <article class="book">
+          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg" alt="Book cover - The Silent City">
+          <div class="meta">Novel</div>
+          <div class="book-title">The Silent City</div>
+          <div class="book-tagline">
+            A portrait of a sleeping metropolis and the one man who hears its secrets.
+          </div>
+        </article>
 
-  <section>
-    <h2>Highlighted Projects</h2>
+        <!-- Book 2 -->
+        <article class="book">
+          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=600" alt="Book cover - Echoes of Rain">
+          <div class="meta">Short Stories</div>
+          <div class="book-title">Echoes of Rain</div>
+          <div class="book-tagline">
+            Eleven stories about love, loss, and the storms we never forecast.
+          </div>
+        </article>
 
-    <div class="card">
-      <strong>Microservice Contract Testing Platform</strong>
-      <p>
-        Designed and implemented PactFlow-based contract testing for multiple Spring Boot services,
-        enabling safe deployments and automated <em>can-i-deploy</em> checks in CI.
-      </p>
-      <div>
-        <span class="pill">PactFlow</span>
-        <span class="pill">GitHub Actions</span>
-        <span class="pill">REST Assured</span>
+        <!-- Book 3 -->
+        <article class="book">
+          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=800" alt="Book cover - Paper Lanterns">
+          <div class="meta">Novel</div>
+          <div class="book-title">Paper Lanterns</div>
+          <div class="book-tagline">
+            A journey through a city of lights, where every wish has a cost.
+          </div>
+        </article>
+
+        <!-- Book 4 -->
+        <article class="book">
+          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=700" alt="Book cover - The Last Letter North">
+          <div class="meta">Novella</div>
+          <div class="book-title">The Last Letter North</div>
+          <div class="book-tagline">
+            One letter, five winters, and the map of a life that might have been.
+          </div>
+        </article>
+
+        <!-- Book 5 -->
+        <article class="book">
+          <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&w=650" alt="Book cover - Rooms We Never Leave">
+          <div class="meta">Short Stories</div>
+          <div class="book-title">Rooms We Never Leave</div>
+          <div class="book-tagline">
+            An exploration of the spaces—real and emotional—that hold us in place.
+          </div>
+        </article>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="card">
-      <strong>API Test Automation Framework</strong>
-      <p>
-        Built a reusable RestAssured test framework with clear layering, test data strategy,
-        and Allure reporting; increased coverage & reduced regression time.
-      </p>
-      <div>
-        <span class="pill">JUnit5</span>
-        <span class="pill">Allure</span>
-        <span class="pill">ArchUnit</span>
+  <!-- RIGHT COLUMN -->
+  <aside>
+    <section class="card">
+      <h2>Author Photos</h2>
+      <p>Moments from readings, writing sessions, and the cities that shape my stories.</p>
+      <div class="gallery">
+        <img src="https://images.pexels.com/photos/261949/pexels-photo-261949.jpeg" alt="John Doe writing in a notebook">
+        <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg" alt="Books and coffee on a table">
+        <img src="https://images.pexels.com/photos/702632/pexels-photo-702632.jpeg" alt="City at night with lights">
+        <img src="https://images.pexels.com/photos/167404/pexels-photo-167404.jpeg" alt="Reading session with audience">
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <strong>UI & NFR Testing Toolkit</strong>
+    <section class="card">
+      <h2>Contact</h2>
+      <p>For interviews, events, or rights inquiries:</p>
       <p>
-        Integrated UI smoke tests, basic performance checks, and security validations
-        into pipelines to guard critical flows end-to-end.
+        📧 <a href="mailto:contact.johndoe@example.com">contact.johndoe@example.com</a><br>
+        📚 Instagram / Twitter: <span class="pill">@johndoewrites</span>
       </p>
-      <div>
-        <span class="pill">Cypress</span>
-        <span class="pill">Performance</span>
-        <span class="pill">Security</span>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Contact & Links</h2>
-    <div class="card">
-      <p>
-        📧 <a href="mailto:youremail@example.com">youremail@example.com</a><br/>
-        💼 <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a><br/>
-        🧪 <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
-      </p>
-    </div>
-  </section>
+    </section>
+  </aside>
 </div>
 
 <footer>
-  © <span id="year"></span> Your Name
+  © <span id="year"></span> John Doe. All rights reserved.
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
