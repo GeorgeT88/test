@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name | QA & Test Automation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background:#0f172a; color:#e5e7eb; }
+    header { padding: 40px 20px; text-align: center; }
+    h1 { margin: 0; font-size: 32px; }
+    h2 { margin-top: 40px; font-size: 22px; }
+    .tagline { color:#9ca3af; margin-top:8px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid #4b5563; font-size:12px; margin:2px; }
+    .card { border:1px solid #111827; background:#111827; padding:16px 18px; border-radius:14px; margin-top:14px; }
+    a { color:#38bdf8; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .pill { display:inline-block; padding:4px 9px; border-radius:999px; background:#111827; font-size:11px; margin:2px 4px 0 0; color:#9ca3af; }
+    footer { text-align:center; font-size:12px; color:#6b7280; padding-bottom:20px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Your Name</h1>
+  <div class="tagline">Senior QA / Test Automation Engineer · API, microservices, contract testing, CI/CD</div>
+</header>
+
+<div class="container">
+  <section>
+    <h2>About</h2>
+    <div class="card">
+      <p>
+        I design and automate test strategies for microservice ecosystems: REST APIs, Spring Boot,
+        contract testing (PactFlow), security checks, and CI-integrated quality gates.
+      </p>
+      <p>
+        My focus: reliable automation, clean architecture, and giving dev teams fast feedback so they
+        can ship safely.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="card">
+      <span class="badge">Java · JUnit5</span>
+      <span class="badge">REST Assured</span>
+      <span class="badge">Pact / PactFlow</span>
+      <span class="badge">Selenide / Selenium / Cypress</span>
+      <span class="badge">ArchUnit</span>
+      <span class="badge">Allure</span>
+      <span class="badge">GitHub Actions / Azure DevOps</span>
+      <span class="badge">API & Microservice Testing</span>
+      <span class="badge">Performance & Security basics</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Highlighted Projects</h2>
+
+    <div class="card">
+      <strong>Microservice Contract Testing Platform</strong>
+      <p>
+        Designed and implemented PactFlow-based contract testing for multiple Spring Boot services,
+        enabling safe deployments and automated <em>can-i-deploy</em> checks in CI.
+      </p>
+      <div>
+        <span class="pill">PactFlow</span>
+        <span class="pill">GitHub Actions</span>
+        <span class="pill">REST Assured</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <strong>API Test Automation Framework</strong>
+      <p>
+        Built a reusable RestAssured test framework with clear layering, test data strategy,
+        and Allure reporting; increased coverage & reduced regression time.
+      </p>
+      <div>
+        <span class="pill">JUnit5</span>
+        <span class="pill">Allure</span>
+        <span class="pill">ArchUnit</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <strong>UI & NFR Testing Toolkit</strong>
+      <p>
+        Integrated UI smoke tests, basic performance checks, and security validations
+        into pipelines to guard critical flows end-to-end.
+      </p>
+      <div>
+        <span class="pill">Cypress</span>
+        <span class="pill">Performance</span>
+        <span class="pill">Security</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact & Links</h2>
+    <div class="card">
+      <p>
+        📧 <a href="mailto:youremail@example.com">youremail@example.com</a><br/>
+        💼 <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a><br/>
+        🧪 <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  © <span id="year"></span> Your Name
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
